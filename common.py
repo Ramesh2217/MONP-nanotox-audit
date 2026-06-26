@@ -15,7 +15,20 @@ import pandas as pd
 # ---------------------------------------------------------------------------
 # Paths
 # ---------------------------------------------------------------------------
-REPO_ROOT = Path(__file__).resolve().parents[1]
+def _find_repo_root() -> Path:
+    """Locate the repository root whether this file sits at the top level or in
+    a scripts/ subfolder. The root is the directory that contains the data/
+    folder (or, failing that, the parent of this file's directory)."""
+    here = Path(__file__).resolve().parent
+    for candidate in (here, here.parent):
+        if (candidate / "data").exists():
+            return candidate
+    # fall back: if this file is inside a scripts/ folder, root is its parent;
+    # otherwise root is the folder the file sits in.
+    return here.parent if here.name == "scripts" else here
+
+
+REPO_ROOT = _find_repo_root()
 # The pipeline auto-detects file type. Place your dataset in the data/ folder.
 # Default: the cleaned 24-column Excel file. (A tab-separated dataset.txt also works.)
 def _resolve_data_path() -> Path:

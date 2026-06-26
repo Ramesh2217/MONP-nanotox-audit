@@ -5,7 +5,14 @@ import matplotlib.pyplot as plt
 from pathlib import Path
 
 BLUE="#56B4E9"; AMBER="#E69F00"; GREEN="#009E73"; DARK="#222222"; GREY="#777777"
-REPO_ROOT = Path(__file__).resolve().parents[1]
+def _find_repo_root():
+    here = Path(__file__).resolve().parent
+    for candidate in (here, here.parent):
+        if (candidate / "data").exists() or (candidate / "results").exists():
+            return candidate
+    return here.parent if here.name == "scripts" else here
+
+REPO_ROOT = _find_repo_root()
 FIGURES_DIR = REPO_ROOT / "results" / "figures"
 
 def main():
