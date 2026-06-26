@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "MONP-nanotox-audit: benchmark audit and validation analysis for metal-oxide nanoparticle cytotoxicity"
+authors:
+  - family-names: "A."
+    given-names: "Ramesh Babu"
+    orcid: "https://orcid.org/0000-0002-8173-2005"
+version: 1.0.0
+date-released: 2026-06-26
+license: MIT
+repository-code: "https://github.com/Ramesh2217/MONP-nanotox-audit"
