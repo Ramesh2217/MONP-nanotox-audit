@@ -18,9 +18,11 @@ and supplementary) from scratch.
 4. Open `notebooks/00_Run_Full_Pipeline.ipynb`, select the venv kernel, and
    choose **Run All**.
 
-The notebook runs all nine stages in order, saves every figure (300-DPI PNG) to
-`results/figures/` and every table (CSV) to `results/`, displays each one inline,
-and finishes with a self-check confirming 483 → 364 → 68.
+The notebook runs all nine stages in order, saving their figures (300-DPI PNG) to
+`results/figures/` and tables (CSV) to `results/`, displaying each one inline, and
+finishing with a self-check confirming 483 → 364 → 68. Figure 3, Figure S1b,
+Figure S3, and Table S6 come from the five reviewer-requested revision analyses and
+are produced by `run_all.py`, not by the notebook.
 
 ## Alternative: command line
 
@@ -38,7 +40,7 @@ python run_all.py
 | 3  | `lomo_validation.py`       | `classifier_results.csv` | Table 1 |
 | 4  | `baseline_models.py`       | `baseline_results.csv` | (Section 3.2) |
 | 5  | `bootstrap_ci.py`          | `bootstrap_results.csv`, `bootstrap_forest.png` | Table 1 (forest-plot visualization) |
-| 6  | `permutation_test.py`      | `permutation_results.csv`, `FigureS1a_permutation_null.png` | Figure S1a |
+| 6  | `permutation_test.py`      | `permutation_results.csv`, `FigureS1_permutation_null.png` | Figure S1a |
 | 7  | `seed_stability.py`        | `seed_stability.csv`, `Figure2_seed_stability.png` | Figure 2, Table S2 |
 | 8  | `feature_decomposition.py` | `feature_decomposition.csv` | Table S4 |
 | 9  | `per_oxide_folds.py`       | `per_oxide_folds.csv`, `FigureS2_per_oxide_folds.png` | Table S3, Table S5, Figure S2 |
@@ -79,3 +81,4 @@ already computed by the stages above; it introduces no new numbers.
 
 Primary seed 42; stability seeds {0, 1, 2, 3, 7, 13, 42, 99}. Permutation and
 bootstrap use 1,000 iterations. Software versions pinned in `requirements.txt`.
+ pinned in `requirements.txt`.
