@@ -1,0 +1,16 @@
+model,setting,LOMO_MCC,CI_low,CI_high,spans_zero
+RandomForest,"n_estimators=100, max_depth=None",-0.1158,-0.1919,-0.0326,False
+RandomForest,"n_estimators=300, max_depth=None",-0.0547,-0.148,0.0452,True
+RandomForest,"n_estimators=300, max_depth=5",-0.0546,-0.1456,0.0457,True
+RandomForest,"n_estimators=500, max_depth=10",-0.0889,-0.172,0.0035,True
+RandomForest,"n_estimators=300, min_samples_leaf=5",-0.0705,-0.141,0.0215,True
+SVM_RBF,"C=0.1, gamma=scale",0.0,0.0,0.0,True
+SVM_RBF,"C=1, gamma=scale",-0.1028,-0.1334,-0.0754,False
+SVM_RBF,"C=10, gamma=scale",-0.0174,-0.1062,0.0811,True
+SVM_RBF,"C=1, gamma=0.1",-0.1028,-0.1346,-0.0754,False
+SVM_RBF,"C=10, gamma=0.01",-0.0137,-0.1054,0.0882,True
+MLP,"hidden=(50,), alpha=1e-4",0.2047,0.0873,0.3179,False
+MLP,"hidden=(100,), alpha=1e-4",0.166,0.0516,0.2787,False
+MLP,"hidden=(100,50), alpha=1e-4",0.2769,0.1665,0.3912,False
+MLP,"hidden=(100,), alpha=1e-2",0.17,0.0538,0.2855,False
+MLP,"hidden=(100,), alpha=1.0",0.21,0.0892,0.3363,False

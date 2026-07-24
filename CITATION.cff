@@ -1,11 +1,76 @@
 cff-version: 1.2.0
-message: "If you use this software, please cite it as below."
-title: "MONP-nanotox-audit: benchmark audit and validation analysis for metal-oxide nanoparticle cytotoxicity"
+message: "If you use this software, please cite both the software (via its GitHub repository) and the associated paper."
+title: "MONP-Benchmark-Audit: Reproducibility audit of a metal-oxide nanoparticle cytotoxicity benchmark"
+type: software
 authors:
-  - family-names: "A."
-    given-names: "Ramesh Babu"
+  - given-names: "Ramesh Babu"
+    family-names: "Avuguddi"
     orcid: "https://orcid.org/0000-0002-8173-2005"
-version: 1.0.0
-date-released: 2026-06-26
+    affiliation: "Department of Chemistry, SVA Govt. College, Srikalahasti, Andhra Pradesh 517644, India"
+  - given-names: "Sankara Rao"
+    family-names: "Miditana"
+    orcid: "https://orcid.org/0000-0001-7988-9022"
+    affiliation: "Department of Chemistry, Government Degree College, Puttur, Andhra Pradesh 517583, India"
+  - given-names: "Nagaseshadri"
+    family-names: "Bobburi"
+    orcid: "https://orcid.org/0000-0003-1142-3183"
+    affiliation: "Department of Chemistry, SCNR Government Degree College, Proddatur, Andhra Pradesh 516360, India"
+  - given-names: "Saivenkatesh"
+    family-names: "Korlam"
+    orcid: "https://orcid.org/0000-0003-2289-3500"
+    affiliation: "Department of Botany, SVA Govt. College, Srikalahasti, Andhra Pradesh 517644, India"
+  - given-names: "Gangaram"
+    family-names: "Theertham"
+    orcid: "https://orcid.org/0000-0002-4778-8769"
+    affiliation: "Department of Statistics, SVA Govt. College, Srikalahasti, Andhra Pradesh 517644, India"
+  - given-names: "Durga Anuja"
+    family-names: "Balireddi"
+    orcid: "https://orcid.org/0009-0005-3222-0950"
+    affiliation: "Department of Computer Applications, PVKN Government Degree College (Autonomous), Chittoor, Andhra Pradesh 517001, India"
 license: MIT
 repository-code: "https://github.com/Ramesh2217/MONP-nanotox-audit"
+keywords:
+  - nanotoxicology
+  - metal-oxide nanoparticles
+  - machine learning
+  - reproducibility
+  - data leakage
+  - leave-one-oxide-out validation
+  - QSAR
+preferred-citation:
+  type: article
+  title: "Apparent machine-learning performance in a metal-oxide nanoparticle cytotoxicity benchmark is driven by validation strategy and duplicate records"
+  authors:
+    - given-names: "Ramesh Babu"
+      family-names: "Avuguddi"
+      orcid: "https://orcid.org/0000-0002-8173-2005"
+    - given-names: "Sankara Rao"
+      family-names: "Miditana"
+      orcid: "https://orcid.org/0000-0001-7988-9022"
+    - given-names: "Nagaseshadri"
+      family-names: "Bobburi"
+      orcid: "https://orcid.org/0000-0003-1142-3183"
+    - given-names: "Saivenkatesh"
+      family-names: "Korlam"
+      orcid: "https://orcid.org/0000-0003-2289-3500"
+    - given-names: "Gangaram"
+      family-names: "Theertham"
+      orcid: "https://orcid.org/0000-0002-4778-8769"
+    - given-names: "Durga Anuja"
+      family-names: "Balireddi"
+      orcid: "https://orcid.org/0009-0005-3222-0950"
+  # journal: "[Journal — to be added on acceptance]"
+  # year: 2026
+  # doi: "[Article DOI — to be added on acceptance]"
+references:
+  - type: article
+    title: "NanoTox: development of a parsimonious in silico model for toxicity assessment of metal-oxide nanoparticles using physicochemical features"
+    authors:
+      - given-names: "Nilesh Anantha"
+        family-names: "Subramanian"
+      - given-names: "Ashok"
+        family-names: "Palaniappan"
+    journal: "ACS Omega"
+    volume: 6
+    year: 2021
+    doi: "10.1021/acsomega.1c01076"

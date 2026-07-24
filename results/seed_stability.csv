@@ -1,0 +1,6 @@
+model,mean_MCC,std_MCC,min_MCC,max_MCC
+LogisticRegression,0.034,0.0,0.034,0.034
+RandomForest,0.0049,0.1099,-0.1158,0.2279
+SVM_RBF,-0.1028,0.0,-0.1028,-0.1028
+MLP,0.1473,0.0638,0.0641,0.2767
+XGBoost,-0.1047,0.0,-0.1047,-0.1047

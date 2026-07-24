@@ -1,0 +1,3 @@
+set,MCC,CI_low,CI_high
+all_oxides,0.166,0.0516,0.2787
+CuO_removed,0.088,-0.0304,0.203

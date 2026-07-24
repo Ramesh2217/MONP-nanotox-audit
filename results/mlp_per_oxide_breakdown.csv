@@ -1,0 +1,6 @@
+held_out_oxide,n,true_cytotoxic,predicted_cytotoxic,cytotoxic_correct,fold_accuracy,pooled_MCC_all,pooled_MCC_no_CuO
+Al2O3,18,0,1,0,0.944,0.166,0.088
+CuO,18,7,7,7,1.0,0.166,0.088
+Fe2O3,18,0,0,0,1.0,0.166,0.088
+TiO2,120,1,45,1,0.633,0.166,0.088
+ZnO,190,60,24,16,0.726,0.166,0.088

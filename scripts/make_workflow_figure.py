@@ -1,4 +1,4 @@
-"""make_workflow_figure.py — generate the analysis-workflow diagram (Figure 3). No data input."""
+"""make_workflow_figure.py — generate the analysis-workflow diagram (Scheme 1, unnumbered). No data input."""
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -6,14 +6,7 @@ from matplotlib.patches import FancyBboxPatch, FancyArrowPatch
 from pathlib import Path
 
 BLUE="#56B4E9"; AMBER="#E69F00"; GREY="#999999"; DARK="#222222"; LIGHT="#F2F2F2"; GREEN="#009E73"
-def _find_repo_root():
-    here = Path(__file__).resolve().parent
-    for candidate in (here, here.parent):
-        if (candidate / "data").exists() or (candidate / "results").exists():
-            return candidate
-    return here.parent if here.name == "scripts" else here
-
-REPO_ROOT = _find_repo_root()
+REPO_ROOT = Path(__file__).resolve().parents[1]
 FIGURES_DIR = REPO_ROOT / "results" / "figures"
 
 def box(ax,x,y,w,h,text,fc=LIGHT,ec=GREY,tc=DARK,fs=9,bold=False,lw=1.2):

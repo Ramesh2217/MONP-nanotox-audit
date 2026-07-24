@@ -101,10 +101,10 @@ def main(seed: int = common.RANDOM_SEED) -> None:
     ax.set_yticklabels([figstyle.label(m) for m in order["model"]])
     ax.set_xlabel("Leave-one-oxide-out MCC (95% bootstrap CI)")
     ax.set_xlim(-0.25, 0.55)
-    out_fig = common.FIGURES_DIR / "Figure3_bootstrap_forest.png"
+    out_fig = common.FIGURES_DIR / "bootstrap_forest.png"
     figstyle.savefig(fig, out_fig)
     plt.close(fig)
-    print("Wrote Figure 3.")
+    print("Wrote forest plot (repo-only).")
 
 
 if __name__ == "__main__":

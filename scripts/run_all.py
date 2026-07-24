@@ -79,7 +79,7 @@ def main() -> None:
     banner("STEP 12/14  MLP per-oxide breakdown")
     mlp_per_oxide_breakdown.main()
 
-    banner("STEP 13/14  Learning curve (Figure 4)")
+    banner("STEP 13/14  Learning curve (Figure 3)")
     learning_curve.main()
 
     banner("STEP 14/14  Oxide-diversity curve (Figure S3)")

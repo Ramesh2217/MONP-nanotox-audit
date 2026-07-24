@@ -1,0 +1,6 @@
+model,kfold_MCC,LOMO_MCC,leakage_gap
+LogisticRegression,0.4869,0.034,0.453
+RandomForest,0.6116,-0.1158,0.7274
+SVM_RBF,0.5979,-0.1028,0.7006
+MLP,0.6419,0.166,0.476
+XGBoost,0.6599,-0.1047,0.7646

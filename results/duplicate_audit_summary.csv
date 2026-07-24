@@ -1,0 +1,7 @@
+metric,value
+raw_records,483.0
+duplicates_removed,119.0
+unique_records,364.0
+cytotoxic,68.0
+non_toxic,296.0
+percent_cytotoxic,18.68
