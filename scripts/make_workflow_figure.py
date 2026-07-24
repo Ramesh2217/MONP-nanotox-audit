@@ -34,7 +34,7 @@ def main():
     box(ax,5.0,y6,3.0,1.45,"Stability analyses\n(random seeds +\nhyperparameter\nsensitivity)",fc=LIGHT,fs=8.2)
     box(ax,8.15,y6,3.3,1.45,"Model interpretation\n(feature decomposition\n+ per-oxide analysis)",fc=LIGHT,fs=8.2)
     arrow(ax,5,4.9,1.85,4.48); arrow(ax,5,4.9,5.0,4.48); arrow(ax,5,4.9,8.15,4.48)
-    box(ax,5,1.5,8.8,1.5,"Apparent model performance depends strongly on validation strategy\nand duplicate records. Under leave-one-oxide-out validation, no evaluated\nmodel exceeded the dose-threshold baseline; one model (MLP) identified a\nweak but statistically significant signal that remained below baseline.",fc="white",ec=DARK,bold=False,fs=8.5,lw=1.6)
+    box(ax,5,1.5,8.8,1.5,"Apparent model performance depends strongly on validation strategy\nand duplicate records. Under leave-one-oxide-out validation, no evaluated\nmodel exceeded the dose-threshold baseline; one model (MLP) showed a\nweak above-chance signal that remained below baseline.",fc="white",ec=DARK,bold=False,fs=8.5,lw=1.6)
     arrow(ax,1.85,3.0,4.2,2.25); arrow(ax,5.0,3.0,5.0,2.25); arrow(ax,8.15,3.0,5.8,2.25)
     plt.tight_layout(); FIGURES_DIR.mkdir(parents=True,exist_ok=True)
     out=FIGURES_DIR/"Figure_workflow.png"; plt.savefig(out,dpi=200,bbox_inches="tight",facecolor="white"); plt.close(fig)
