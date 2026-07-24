@@ -81,4 +81,3 @@ already computed by the stages above; it introduces no new numbers.
 
 Primary seed 42; stability seeds {0, 1, 2, 3, 7, 13, 42, 99}. Permutation and
 bootstrap use 1,000 iterations. Software versions pinned in `requirements.txt`.
- pinned in `requirements.txt`.
