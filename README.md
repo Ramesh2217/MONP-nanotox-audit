@@ -4,16 +4,18 @@ Reproducibility audit of a publicly available metal-oxide nanoparticle (MONP)
 cytotoxicity benchmark. This repository contains the analysis code accompanying
 the manuscript:
 
-> *Apparent machine-learning performance in a metal-oxide nanoparticle
-> cytotoxicity benchmark is driven by validation strategy and duplicate records.*
+> *Validation strategy governs apparent machine-learning performance in
+> metal-oxide nanoparticle cytotoxicity prediction.*
 > Avuguddi, R. B., Miditana, S. R., Bobburi, N., Korlam, S., Theertham, G., & Balireddi, D. A.
 
-The study examines how duplicate records and the choice of validation strategy
-affect apparent model performance on the NanoTox benchmark, and whether
-machine-learning models offer any advantage over a simple dose-based baseline
-when entire oxide classes are held out (leave-one-oxide-out, LOMO).
-
+The study examines how validation strategy affects apparent model performance
+on the NanoTox benchmark and how model-space duplicate records can amplify the
+difference between record-level cross-validation and material-class holdout
+evaluation. It also tests whether the evaluated machine-learning models offer
+any advantage over a simple dose-based baseline when an entire oxide class is
+held out (leave-one-metal-oxide-out, LOMO).
 ## What this repository contains
+
 
 This repository provides the **analysis code only**. The benchmark dataset is
 **not redistributed here** and must be obtained directly from the original
@@ -64,7 +66,7 @@ used. See [`data/README.md`](data/README.md) for the authoritative instructions.
    analyses), writes 300-DPI grayscale-safe figures to
    `results/figures/`, writes all result tables to `results/`, and finishes with
    a self-check confirming the run reproduces the reported dataset composition
-   (483 → 364 unique, 68 cytotoxic).
+   (483 → 364 unique modeling observations, 68 cytotoxic).
 
    Alternatively, run the master notebook `notebooks/00_Run_Full_Pipeline.ipynb`,
    or the individual scripts/notebooks for a single analysis:
@@ -87,7 +89,7 @@ to `results/figures/`:
 
 Main-text figures:
 
-- `Figure1_leakage_curve.png` — Figure 1: leakage gap vs duplicated fraction, with OLS trend.
+- `Figure1_leakage_curve.png` — Figure 1: validation-strategy gap vs controlled duplicate-injection fraction, with OLS trend.
 - `Figure2_seed_stability.png` — Figure 2: per-seed LOMO MCC for each model (MLP
   instability vs the seed-stable behaviour of the other classifiers).
 - `Figure_learning_curve.png` — Figure 3: leave-one-oxide-out learning curves for
@@ -117,8 +119,8 @@ overwritten when you re-run the pipeline.
 | Step | Script | Notebook | Purpose |
 |------|--------|----------|---------|
 | — | `run_all.py`          | `00_Run_Full_Pipeline.ipynb` | Run all stages end-to-end + self-check |
-| 1 | `duplicate_audit.py`  | `01_Data_Audit.ipynb`        | Audit and remove exact duplicate records (483 → 364) |
-| 2 | `leakage_curve.py`    | `02_LOMO_Validation.ipynb`   | Leakage gap vs duplication fraction (**Figure 1**) |
+| 1 | `duplicate_audit.py`  | `01_Data_Audit.ipynb`        | Audit and remove model-space duplicate records (483 → 364) |
+| 2 | `leakage_curve.py`    | `02_LOMO_Validation.ipynb`   | Validation-strategy gap vs controlled duplicate-injection fraction (**Figure 1**) |
 | 3 | `lomo_validation.py`  | `02_LOMO_Validation.ipynb`   | Leave-one-oxide-out evaluation of the classifiers |
 | 4 | `baseline_models.py`  | `02_LOMO_Validation.ipynb`   | Single-variable dose-threshold baseline under LOMO |
 | 5 | `bootstrap_ci.py`     | `03_Bootstrap_CI.ipynb`      | Bootstrap 95% confidence intervals for MCC |

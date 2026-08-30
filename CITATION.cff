@@ -39,7 +39,7 @@ keywords:
   - QSAR
 preferred-citation:
   type: article
-  title: "Apparent machine-learning performance in a metal-oxide nanoparticle cytotoxicity benchmark is driven by validation strategy and duplicate records"
+  title: "Validation strategy governs apparent machine-learning performance in metal-oxide nanoparticle cytotoxicity prediction"
   authors:
     - given-names: "Ramesh Babu"
       family-names: "Avuguddi"
