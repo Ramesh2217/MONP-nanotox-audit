@@ -27,7 +27,7 @@ MONP-Benchmark-Audit/
 ├── LICENSE
 ├── CITATION.cff
 ├── requirements.txt
-├── MONP_supplementary_material.docx   # Supplementary tables (S1–S8) and figures
+├── MONP_supplementary_material.docx   # Supplementary tables (S1–S6) and figures
 ├── notebooks/            # Step-by-step notebooks, one per analysis
 ├── scripts/              # Standalone Python scripts (callable from CLI)
 ├── results/              # Generated CSV outputs and figures
@@ -78,7 +78,7 @@ used. See [`data/README.md`](data/README.md) for the authoritative instructions.
    python scripts/bootstrap_ci.py
    python scripts/permutation_test.py
    python scripts/seed_stability.py        # writes Figure 2
-   python scripts/feature_decomposition.py # writes Table S4
+   python scripts/feature_decomposition.py # writes Table S3
    python scripts/per_oxide_folds.py       # writes Figure S2
    ```
 
@@ -126,8 +126,8 @@ overwritten when you re-run the pipeline.
 | 5 | `bootstrap_ci.py`     | `03_Bootstrap_CI.ipynb`      | Bootstrap 95% confidence intervals for MCC |
 | 6 | `permutation_test.py` | `04_Permutation_Test.ipynb`  | Permutation test of LOMO performance against the null |
 | 7 | `seed_stability.py`   | `05_Seed_Stability.ipynb`    | Stability across random seeds (**Figure 2**, Table S2) |
-| 8 | `feature_decomposition.py` | `00_Run_Full_Pipeline.ipynb` | Full / dose-only / no-dose descriptor sets under LOMO (Table S4) |
-| 9 | `per_oxide_folds.py`  | `00_Run_Full_Pipeline.ipynb` | Per-oxide held-out performance with n / cytotoxic counts (Table S3, **Figure S2**) |
+| 8 | `feature_decomposition.py` | `00_Run_Full_Pipeline.ipynb` | Full / dose-only / no-dose descriptor sets under LOMO (Table S3) |
+| 9 | `per_oxide_folds.py`  | `00_Run_Full_Pipeline.ipynb` | Per-oxide held-out performance with n / cytotoxic counts (**Figure S2**) |
 
 Beyond these nine core stages, `run_all.py` also runs five reviewer-requested
 revision analyses (documented in [`REVISION_ANALYSES.md`](REVISION_ANALYSES.md)),
