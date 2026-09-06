@@ -9,8 +9,8 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 FIGURES_DIR = REPO_ROOT / "results" / "figures"
 
 def main():
-    fig=plt.figure(figsize=(7.0,3.6))
-    fig.suptitle("Validation strategy and duplicate records shape apparent ML performance",fontsize=11,fontweight="bold",y=1.02)
+    fig=plt.figure(figsize=(13.0,5.2))
+    fig.suptitle("Validation strategy governs apparent ML performance",fontsize=11,fontweight="bold",y=1.02)
     ax=fig.add_axes([0.08,0.16,0.52,0.72])
     labels=["Random\n5-fold CV","Leave-one-\noxide-out","Dose rule\n(baseline)"]; values=[0.61,-0.12,0.41]; colors=[BLUE,AMBER,GREEN]
     bars=ax.bar(labels,values,color=colors,edgecolor="white",width=0.62,zorder=3)
@@ -27,7 +27,9 @@ def main():
         ax2.add_patch(plt.Rectangle((0.0,y-0.005),0.04,0.04,color=col,transform=ax2.transAxes,clip_on=False))
         ax2.text(0.09,y+0.015,text,fontsize=8.0,va="top",color=DARK); y-=0.30
     FIGURES_DIR.mkdir(parents=True,exist_ok=True)
-    out=FIGURES_DIR/"Graphical_abstract.png"; plt.savefig(out,dpi=300,bbox_inches="tight",facecolor="white"); plt.close(fig)
+    out=FIGURES_DIR/"Graphical_abstract.png"; plt.savefig(out,dpi=300,bbox_inches="tight",facecolor="white")
+    out_pdf=FIGURES_DIR/"Graphical_abstract.pdf"; plt.savefig(out_pdf,bbox_inches="tight",facecolor="white")
+    plt.close(fig)
     print(f"Wrote {out}")
 
 if __name__=="__main__":
