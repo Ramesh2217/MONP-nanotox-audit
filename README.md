@@ -4,9 +4,8 @@ Reproducibility audit of a publicly available metal-oxide nanoparticle (MONP)
 cytotoxicity benchmark. This repository contains the analysis code accompanying
 the manuscript:
 
-> *Validation strategy governs apparent machine-learning performance in metal-oxide nanoparticle cytotoxicity prediction.*
-> Avuguddi, R. B., Miditana, S. R., Bobburi, N., Korlam, S., Theertham, G., & Balireddi, D. A.
-
+> *Avuguddi, R. B., Miditana, S. R., Bobburi, N., Korlam, S., Theertham, G., & Balireddi, D. A.
+> Validation strategy governs apparent machine-learning performance in metal-oxide nanoparticle cytotoxicity prediction. Unpublished manuscript.
 The study examines how validation strategy affects apparent model performance
 on the NanoTox benchmark and how model-space duplicate records can amplify the
 difference between record-level cross-validation and material-class holdout
