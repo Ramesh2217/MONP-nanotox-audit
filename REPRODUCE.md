@@ -53,8 +53,10 @@ python run_all.py
 
 ## Figures (all 300-DPI, grayscale-safe)
 
-- **Figure 1** — validation gap (k-fold vs LOMO) vs duplicated fraction.
-- **Figure 2** — per-seed LOMO MCC per model (MLP instability).
+- **Figure 1** — random five-fold MCC minus LOMO MCC vs injected duplicate rows (% of the 364-row deduplicated dataset).
+- **Figure 2** — per-seed LOMO MCC for each classifier. Random Forest changes
+  sign across seeds; MLP remains positive but varies, while Logistic Regression,
+  SVM and XGBoost are seed-invariant in the reported runs.
 - **Scheme 1** — workflow overview of the benchmark audit and validation (from
   the workflow generator; all values sourced from the stage CSVs, no new computation).
 - **Bootstrap forest plot** (`bootstrap_forest.png`) — LOMO MCC with 95% bootstrap
@@ -67,14 +69,16 @@ python run_all.py
 Styling is centralized in `scripts/figstyle.py` — restyle everything in one place.
 
 
-The nine core stages regenerate main-text Tables 1–2, supplementary Tables S1–S3
-and S5, and their associated figures from `data/dataset.txt`. The five additional
-analyses documented in `REVISION_ANALYSES.md` generate Figure 3, Figures S1b and S3,
-and Table S4. Table S6 (software environment) is a static record of package
+The nine core stages regenerate main-text Tables 1–2, supplementary Tables S1–S3,
+and the XGBoost permutation results in Table S5 from `data/dataset.txt`. The five
+additional analyses documented in `REVISION_ANALYSES.md` generate Figure 3, Figures
+S1b and S3, Table S4, and the MLP permutation results in Table S5. Table S6 (software environment) is a static record of package
 versions, not a computed output. Table S1's duplicated-fraction
 rows come from the controlled duplicate-injection experiment in `leakage_curve.py`
-(stage 2), which injects exact duplicates at known rates purely to demonstrate the
-leakage mechanism. Scheme 1 (the workflow overview) is produced from the values
+(stage 2), which samples rows from the 364-row deduplicated dataset with replacement
+and appends them at specified rates. The injected-row fraction is relative to the
+364 starting observations, not the expanded dataset size. This experiment illustrates
+how duplicate injection can affect the validation gap on this dataset. Scheme 1 (the workflow overview) is produced from the values
 already computed by the stages above; it introduces no new numbers.
 
 ## Reproducibility settings

@@ -1,7 +1,8 @@
 # Additional analyses and supporting scripts
 
 This file documents nine additional analyses and supporting scripts.
-Most read the same dataset (`data/NanoTox_dataset_clean.xlsx`) and write to
+Most use the shared loader in `scripts/common.py`, which checks `data/dataset.txt`
+first, then `data/NanoTox_dataset_clean.xlsx` and `data/NanoTox.csv`. They write to
 `results/`; the two figure generators (sections 8–9) take no data input. Run any of
 them from the repository root with the virtual environment active. Sections 1–5 are
 also invoked by `run_all.py` as part of the main pipeline; sections 6–9 are run
@@ -70,9 +71,10 @@ Outputs:
 - `results/learning_curve.csv`
 - `results/figures/Figure_learning_curve.png`  (manuscript Figure 3)
 
-Expected (reference run): the LOMO MCC stays near chance and well below the dose
-baseline (0.41) across all training-set sizes — performance plateaus, it does not
-improve with more data of the same kind.
+In the reference run, LOMO MCC remained near chance and below the dose baseline
+(0.41) across the tested training-set fractions. These results show no consistent
+gain over that tested range; they do not establish how performance would change
+with a larger or different dataset.
 
 ## 5. Oxide-diversity curve  (exploratory)
 
@@ -129,10 +131,10 @@ test.
 
 Recomputes the MLP's pooled LOMO MCC with the copper-oxide fold removed and adds a
 percentile bootstrap 95% CI, using the same bootstrap as `bootstrap_ci.py` (1,000
-resamples) restricted to the non-CuO folds. The point estimate (0.166 with all
-oxides, 0.088 with CuO removed) is in the main text; this reports whether the
-CuO-excluded interval spans zero — i.e. whether the residual, non-CuO signal is
-distinguishable from chance.
+resamples) restricted to the non-CuO folds. The point estimates (0.166 with all
+oxides and 0.088 with CuO removed) are reported in the main text. The interval
+describes resampling uncertainty for the held-out observations; it is not a
+formal test of above-chance performance across oxide classes.
 
 ```
 python scripts/mlp_no_cuo_ci.py
@@ -157,8 +159,8 @@ Output:
 
 ## 9. Workflow diagram  (figure generator; no data input)
 
-Draws Scheme 1, the unnumbered workflow overview of the benchmark audit and
-validation pipeline. Like the graphical abstract it takes no data input; the boxes
+Draws Scheme 1, the workflow overview presented separately from the numbered
+figure series. Like the graphical abstract it takes no data input; the boxes
 summarize the pipeline and its headline numbers for display, sourced from the
 analyses above rather than recomputed.
 

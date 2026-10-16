@@ -66,17 +66,17 @@ used. See [`data/README.md`](data/README.md) for the authoritative instructions.
    ```
 3. Run the repository's combined analysis script:
    ```bash
-   cd scripts
-   python run_all.py
+   python scripts/run_all.py
    ```
-   This runs all fourteen steps in order (nine core stages plus five revision
+   This runs all fourteen steps in order (nine core stages plus five additional
    analyses), writes 300-DPI grayscale-safe figures to
    `results/figures/`, writes all result tables to `results/`, and finishes with
    a self-check confirming the run reproduces the reported dataset composition
    (483 → 364 unique modeling observations, 68 cytotoxic).
 
-   Alternatively, run the master notebook `notebooks/00_Run_Full_Pipeline.ipynb`,
-   or the individual scripts/notebooks for a single analysis:
+   The master notebook `notebooks/00_Run_Full_Pipeline.ipynb` runs the nine core
+   stages only; it does not run the five additional analyses. To run one analysis,
+   run its script from the repository root:
    ```bash
    python scripts/duplicate_audit.py
    python scripts/leakage_curve.py        # writes Figure 1
@@ -96,13 +96,14 @@ to `results/figures/`:
 
 Main-text figures:
 
-- `Figure1_leakage_curve.png` — Figure 1: validation-strategy gap vs controlled duplicate-injection fraction, with OLS trend.
-- `Figure2_seed_stability.png` — Figure 2: per-seed LOMO MCC for each model (MLP
-  instability vs the seed-stable behaviour of the other classifiers).
+- `Figure1_leakage_curve.png` — Figure 1: validation-strategy gap vs injected duplicate rows (% of the 364 deduplicated observations), with OLS trend.
+- `Figure2_seed_stability.png` — Figure 2: per-seed LOMO MCC for each classifier.
+  Random Forest changes sign across seeds; MLP remains positive but varies, while
+  Logistic Regression, SVM and XGBoost are seed-invariant in the reported runs.
 - `Figure_learning_curve.png` — Figure 3: leave-one-metal-oxide-out (LOMO) learning curves for
   XGBoost and the random forest.
-- `Figure_workflow.png` — Scheme 1 (unnumbered): workflow overview of the audit
-  and validation pipeline.
+- `Figure_workflow.png` — Scheme 1: workflow overview, presented separately from
+  the numbered figure series.
 
 Supplementary figures:
 
@@ -127,7 +128,7 @@ overwritten when you re-run the pipeline.
 |------|--------|----------|---------|
 | — | `run_all.py`          | `00_Run_Full_Pipeline.ipynb` | Run all stages end-to-end + self-check |
 | 1 | `duplicate_audit.py`  | `01_Data_Audit.ipynb`        | Audit and remove model-space duplicate records (483 → 364) |
-| 2 | `leakage_curve.py`    | `02_LOMO_Validation.ipynb`   | Validation-strategy gap vs controlled duplicate-injection fraction (**Figure 1**) |
+| 2 | `leakage_curve.py`    | `02_LOMO_Validation.ipynb`   | Validation-strategy gap vs injected duplicate rows (% of the 364 deduplicated observations) (**Figure 1**) |
 | 3 | `lomo_validation.py`  | `02_LOMO_Validation.ipynb`   | Leave-one-metal-oxide-out (LOMO) evaluation of the classifiers |
 | 4 | `baseline_models.py`  | `02_LOMO_Validation.ipynb`   | Single-variable dose-threshold baseline under LOMO |
 | 5 | `bootstrap_ci.py`     | `03_Bootstrap_CI.ipynb`      | Bootstrap 95% confidence intervals for MCC |
