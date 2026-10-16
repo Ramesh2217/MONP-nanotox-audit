@@ -35,10 +35,11 @@ keywords:
   - machine learning
   - reproducibility
   - data leakage
-  - leave-one-oxide-out validation
+  - leave-one-metal-oxide-out validation
   - QSAR
 preferred-citation:
-  type: article
+  type: unpublished
+  notes: "Unpublished manuscript."
   title: "Validation strategy governs apparent machine-learning performance in metal-oxide nanoparticle cytotoxicity prediction"
   authors:
     - given-names: "Ramesh Babu"
@@ -59,9 +60,6 @@ preferred-citation:
     - given-names: "Durga Anuja"
       family-names: "Balireddi"
       orcid: "https://orcid.org/0009-0005-3222-0950"
-  # journal: "[Journal — to be added on acceptance]"
-  # year: 2026
-  # doi: "[Article DOI — to be added on acceptance]"
 references:
   - type: article
     title: "NanoTox: development of a parsimonious in silico model for toxicity assessment of metal-oxide nanoparticles using physicochemical features"

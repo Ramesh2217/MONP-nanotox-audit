@@ -1,32 +1,41 @@
 # MONP-Benchmark-Audit
 
-Reproducibility audit of a publicly available metal-oxide nanoparticle (MONP)
-cytotoxicity benchmark. This repository contains the analysis code accompanying
-the manuscript:
+Reproducibility audit of the publicly available NanoTox metal-oxide nanoparticle
+(MONP) cytotoxicity benchmark.
 
-> *Avuguddi, R. B., Miditana, S. R., Bobburi, N., Korlam, S., Theertham, G., & Balireddi, D. A.
-> Validation strategy governs apparent machine-learning performance in metal-oxide nanoparticle cytotoxicity prediction. Unpublished manuscript.
-The study examines how validation strategy affects apparent model performance
-on the NanoTox benchmark and how model-space duplicate records can amplify the
-difference between record-level cross-validation and material-class holdout
-evaluation. It also tests whether the evaluated machine-learning models offer
-any advantage over a simple dose-based baseline when an entire oxide class is
-held out (leave-one-metal-oxide-out, LOMO).
+This repository contains analysis scripts, result files, computational
+documentation, and supporting materials that enable inspection and independent
+checking of the principal analyses reported in the manuscript.
+
+**Manuscript:** Avuguddi, R. B.; Miditana, S. R.; Bobburi, N.; Korlam, S.;
+Theertham, G.; Balireddi, D. A. “Validation strategy governs apparent
+machine-learning performance in metal-oxide nanoparticle cytotoxicity
+prediction.” Unpublished manuscript.
+
+The analysis compares random stratified five-fold cross-validation with
+leave-one-metal-oxide-out (LOMO) validation for Logistic Regression, Random
+Forest, RBF Support Vector Machine, Multilayer Perceptron, and XGBoost. The
+controlled duplicate-injection experiment uses Random Forest only. The
+dose-threshold comparator is evaluated under LOMO, with its threshold selected
+by MCC in the training partition and applied to the held-out oxide. The
+validation-strategy gap is random five-fold MCC minus LOMO MCC.
 ## What this repository contains
 
 
-This repository provides the **analysis code only**. The benchmark dataset is
-**not redistributed here** and must be obtained directly from the original
-NanoTox repository (see [`data/README.md`](data/README.md)).
+The benchmark dataset is **not redistributed here** and must be obtained
+directly from the original NanoTox repository (see
+[`data/README.md`](data/README.md)).
 
 ```
 MONP-Benchmark-Audit/
 ├── README.md
 ├── LICENSE
 ├── CITATION.cff
+├── REPRODUCE.md
+├── REVISION_ANALYSES.md
 ├── requirements.txt
 ├── MONP_supplementary_material.docx   # Supplementary tables (S1–S6) and figures
-├── notebooks/            # Step-by-step notebooks, one per analysis
+├── notebooks/            # Jupyter notebooks for analysis workflows
 ├── scripts/              # Standalone Python scripts (callable from CLI)
 ├── results/              # Generated CSV outputs and figures
 ├── manuscript/           # README describing the supplementary material
@@ -55,7 +64,7 @@ used. See [`data/README.md`](data/README.md) for the authoritative instructions.
    source venv/bin/activate        # Windows: venv\Scripts\activate
    pip install -r requirements.txt
    ```
-3. Run the **entire pipeline** with one command (recommended):
+3. Run the repository's combined analysis script:
    ```bash
    cd scripts
    python run_all.py
@@ -90,7 +99,7 @@ Main-text figures:
 - `Figure1_leakage_curve.png` — Figure 1: validation-strategy gap vs controlled duplicate-injection fraction, with OLS trend.
 - `Figure2_seed_stability.png` — Figure 2: per-seed LOMO MCC for each model (MLP
   instability vs the seed-stable behaviour of the other classifiers).
-- `Figure_learning_curve.png` — Figure 3: leave-one-oxide-out learning curves for
+- `Figure_learning_curve.png` — Figure 3: leave-one-metal-oxide-out (LOMO) learning curves for
   XGBoost and the random forest.
 - `Figure_workflow.png` — Scheme 1 (unnumbered): workflow overview of the audit
   and validation pipeline.
@@ -119,7 +128,7 @@ overwritten when you re-run the pipeline.
 | — | `run_all.py`          | `00_Run_Full_Pipeline.ipynb` | Run all stages end-to-end + self-check |
 | 1 | `duplicate_audit.py`  | `01_Data_Audit.ipynb`        | Audit and remove model-space duplicate records (483 → 364) |
 | 2 | `leakage_curve.py`    | `02_LOMO_Validation.ipynb`   | Validation-strategy gap vs controlled duplicate-injection fraction (**Figure 1**) |
-| 3 | `lomo_validation.py`  | `02_LOMO_Validation.ipynb`   | Leave-one-oxide-out evaluation of the classifiers |
+| 3 | `lomo_validation.py`  | `02_LOMO_Validation.ipynb`   | Leave-one-metal-oxide-out (LOMO) evaluation of the classifiers |
 | 4 | `baseline_models.py`  | `02_LOMO_Validation.ipynb`   | Single-variable dose-threshold baseline under LOMO |
 | 5 | `bootstrap_ci.py`     | `03_Bootstrap_CI.ipynb`      | Bootstrap 95% confidence intervals for MCC |
 | 6 | `permutation_test.py` | `04_Permutation_Test.ipynb`  | Permutation test of LOMO performance against the null |
@@ -127,8 +136,7 @@ overwritten when you re-run the pipeline.
 | 8 | `feature_decomposition.py` | `00_Run_Full_Pipeline.ipynb` | Full / dose-only / no-dose descriptor sets under LOMO (Table S3) |
 | 9 | `per_oxide_folds.py`  | `00_Run_Full_Pipeline.ipynb` | Per-oxide held-out performance with n / cytotoxic counts (**Figure S2**) |
 
-Beyond these nine core stages, `run_all.py` also runs five reviewer-requested
-revision analyses (documented in [`REVISION_ANALYSES.md`](REVISION_ANALYSES.md)),
+Beyond these nine core stages, `run_all.py` also runs five additional analyses (documented in [`REVISION_ANALYSES.md`](REVISION_ANALYSES.md)),
 for 14 steps in total.
 
 `common.py` holds the shared data path, descriptor set, and deduplication rule;
@@ -137,8 +145,7 @@ for 14 steps in total.
 ## Reproducibility settings
 
 A fixed random seed (42) is used for the primary analysis; eight seeds
-{0, 1, 2, 3, 7, 13, 42, 99} are used for the stability assessment. Software
-versions are pinned in `requirements.txt`.
+{0, 1, 2, 3, 7, 13, 42, 99} are used for the stability assessment. Core analysis package versions are pinned in `requirements.txt`; Jupyter is listed without a fixed version for notebook use.
 
 ## Citation
 

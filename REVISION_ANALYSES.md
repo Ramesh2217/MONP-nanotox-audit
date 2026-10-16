@@ -1,15 +1,15 @@
-# Revision analyses (reviewer-requested)
+# Additional analyses and supporting scripts
 
-This file documents nine analyses and supporting scripts used during revision.
+This file documents nine additional analyses and supporting scripts.
 Most read the same dataset (`data/NanoTox_dataset_clean.xlsx`) and write to
 `results/`; the two figure generators (sections 8–9) take no data input. Run any of
 them from the repository root with the virtual environment active. Sections 1–5 are
 also invoked by `run_all.py` as part of the main pipeline; sections 6–9 are run
 individually.
 
-## 1. MLP permutation test  (reviewer comments 3 & 7)
+## 1. MLP permutation test
 
-Permutation test of leave-one-oxide-out performance for the multilayer
+Permutation test of leave-one-metal-oxide-out (LOMO) performance for the multilayer
 perceptron (the only model whose bootstrap CI lies above zero). Mirrors the
 existing XGBoost permutation test.
 
@@ -23,7 +23,7 @@ Outputs:
 
 Full run uses 1,000 permutations and takes a few minutes.
 
-## 2. Hyperparameter sensitivity  (reviewer comment 5)
+## 2. Hyperparameter sensitivity
 
 LOMO MCC (with percentile bootstrap 95% CI) for a small reasonable grid of
 settings for the random forest, SVM (RBF), and MLP. Descriptive robustness
@@ -38,13 +38,9 @@ Output:
 
 Full run uses 1,000 bootstrap resamples per setting and takes a few minutes.
 
-## What to send back
 
-After running the revision analyses in this file, send the generated files in
-`results/` (CSVs) and `results/figures/` (PNGs) so the manuscript numbers and
-figures can be set to your machine's output.
 
-## 3. MLP per-oxide breakdown  (revision; verifies the interpretation)
+## 3. MLP per-oxide breakdown
 
 Shows where the MLP's above-chance pooled score comes from, by reporting its
 performance on each held-out oxide and recomputing the pooled MCC with the
@@ -61,7 +57,7 @@ Expected (from the reference run): CuO fold 7/7 cytotoxic correct; pooled MCC
 0.166 overall, 0.088 with the CuO fold removed — i.e. CuO is the largest single
 contributor but not the sole source of the signal.
 
-## 4. Learning curve  (reviewer priority 1)
+## 4. Learning curve
 
 Tests whether material-level performance improves with more training data, by
 subsampling each LOMO fold's training set to a range of fractions.
@@ -100,14 +96,15 @@ motivation for larger/more diverse benchmarks, not as evidence.
 
 ---
 
-The remaining scripts are standalone supporting analyses and figure generators.
-They are run individually and are **not** invoked by `run_all.py`; none produces a
-number cited in the manuscript.
+Sections 6–9 describe standalone supporting analyses and figure generators that
+are not invoked by `run_all.py`. Sections 6–7 provide supporting comparisons or
+checks; sections 8–9 generate figures from supplied headline values and do not
+recompute them.
 
 ## 6. Dose-baseline vs MLP comparison  (exploratory)
 
 Compares the dose-threshold baseline and the multilayer perceptron under the same
-leave-one-oxide-out scheme. Reports each model's pooled LOMO MCC with a percentile
+leave-one-metal-oxide-out (LOMO) scheme. Reports each model's pooled LOMO MCC with a percentile
 bootstrap 95% CI (dose 0.4103, MLP 0.166 — the point estimates reported in the
 manuscript), a check of whether the two intervals overlap, and a McNemar paired
 test on the two models' correctness over the identical held-out instances.
@@ -128,7 +125,7 @@ considered and deliberately excluded on that basis — the dose-vs-MLP compariso
 the paper rests on the point estimates and their confidence intervals, not on this
 test.
 
-## 7. MLP confidence interval with CuO removed  (Reviewer 1, point 4)
+## 7. MLP confidence interval with CuO removed
 
 Recomputes the MLP's pooled LOMO MCC with the copper-oxide fold removed and adds a
 percentile bootstrap 95% CI, using the same bootstrap as `bootstrap_ci.py` (1,000
